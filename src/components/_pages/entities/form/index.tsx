@@ -204,11 +204,12 @@ export default function EntityForm() {
 
     const defaultValues: FormValues = useMemo(() => {
         const entityProvider = entity?.connectorUuid ? { value: entity.connectorUuid!, label: entity.connectorName! } : undefined;
+        const storeKind = entity ? { value: entity.kind, label: entity.kind } : undefined;
 
         return {
             name: editMode ? entity?.name || undefined : undefined,
             entityProvider: editMode ? entityProvider : undefined,
-            storeKind: editMode ? (entity ? { value: entity.kind, label: entity.kind } : undefined) : undefined,
+            storeKind: editMode ? storeKind : undefined,
         };
     }, [editMode, entity]);
 
